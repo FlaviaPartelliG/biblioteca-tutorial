@@ -31,8 +31,18 @@ export class InMemoryLivroRepository implements LivroRepository {
     return salvo;
   }
 
+  findById(id: LivroId): Livro | null {
+    return this.items.find((livro) => livro.id?.equals(id)) ?? null;
+  }
+
   findByIsbn(isbn: Isbn): Livro | null {
     return this.items.find((item) => item.isbn.equals(isbn)) ?? null;
+  }
+
+  updateIsbn(livro: Livro): void {
+    this.items = this.items.map((atual) =>
+      atual.id?.equals(livro.id!) ? livro : atual,
+    );
   }
 
   findByAutorId(autorId: AutorId): Livro[] {
