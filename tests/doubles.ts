@@ -34,15 +34,15 @@ export class InMemoryLivroRepository implements LivroRepository {
   findById(id: LivroId): Livro | null {
     return this.items.find((livro) => livro.id?.equals(id)) ?? null;
   }
-
-  findByIsbn(isbn: Isbn): Livro | null {
-    return this.items.find((item) => item.isbn.equals(isbn)) ?? null;
-  }
-
+  
   updateIsbn(livro: Livro): void {
     this.items = this.items.map((atual) =>
       atual.id?.equals(livro.id!) ? livro : atual,
     );
+  }
+
+  findByIsbn(isbn: Isbn): Livro | null {
+    return this.items.find((item) => item.isbn.equals(isbn)) ?? null;
   }
 
   findByAutorId(autorId: AutorId): Livro[] {
@@ -63,7 +63,7 @@ export class InMemoryLivroRepository implements LivroRepository {
 }
 
 export class InMemoryAutoria implements ConsultaDeAutoria {
-  constructor(private readonly items: Record<number, AutorConhecido>) {}
+  constructor(private readonly items: Record<number, AutorConhecido>) { }
 
   autor(autorId: AutorId): AutorConhecido | null {
     return this.items[autorId.value] ?? null;

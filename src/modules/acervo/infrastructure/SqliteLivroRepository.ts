@@ -62,8 +62,7 @@ export class SqliteLivroRepository implements LivroRepository {
   }
 
   findById(id: LivroId): Livro | null {
-    const row = db
-      .query("SELECT * FROM livros WHERE id = ?")
+    const row = db.query("SELECT * FROM livros WHERE id = ?")
       .get(id.value) as LivroRow | null;
     return row === null ? null : toLivro(row);
   }
@@ -74,7 +73,6 @@ export class SqliteLivroRepository implements LivroRepository {
       livro.id!.value,
     ]);
   }
-
   findByIsbn(isbn: Isbn): Livro | null {
     const row = db
       .query("SELECT * FROM livros WHERE isbn = ?")

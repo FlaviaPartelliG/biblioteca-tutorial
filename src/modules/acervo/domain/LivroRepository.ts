@@ -9,6 +9,7 @@ import type { Livro } from "./Livro";
  * consultas.
  */
 export interface LivroRepository {
+  findByAutorIds(autorIds: AutorId[]): unknown;
   contarNoAcervoDoAutor(autorId: AutorId): number;
   contarCatalogadosNoAno(ano: string): number;
 
@@ -17,6 +18,6 @@ export interface LivroRepository {
   findByIsbn(isbn: Isbn): Livro | null;
   findByAutorId(autorId: AutorId): Livro[];
   searchByTitulo(termo: string): Livro[];
-  findByAutorIds(autorIds: AutorId[]): Livro[];
+  findById(id: LivroId): Livro | null;
   updateIsbn(livro: Livro): void;
 }

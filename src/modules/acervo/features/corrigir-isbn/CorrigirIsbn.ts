@@ -1,12 +1,12 @@
-import { LivroId } from "../../../../shared/identifiers";
 import { NotFound, RuleConflict } from "../../../../shared/errors";
+import { LivroId } from "../../../../shared/identifiers";
 import { Isbn } from "../../domain/Isbn";
 import type { LivroRepository } from "../../domain/LivroRepository";
-import { isbnCorrigidoToJson, type IsbnCorrigidoJson } from "../../output";
+import { type IsbnCorrigidoJson, isbnCorrigidoToJson } from "../../output";
 import type { CorrecaoDeIsbn } from "./input";
 
 export class CorrigirIsbn {
-  constructor(private readonly livros: LivroRepository) {}
+  constructor(private readonly livros: LivroRepository) { }
 
   execute(input: CorrecaoDeIsbn): IsbnCorrigidoJson {
     const id = new LivroId(input.id);

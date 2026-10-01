@@ -1,8 +1,4 @@
-import {
-  getBodyAsObject,
-  getFieldAsPositiveInt,
-  getFieldAsText,
-} from "../../../../shared/validation";
+import { getBodyAsObject, getFieldAsPositiveInt, getFieldAsText } from "../../../../shared/validation";
 
 export type CorrecaoDeIsbn = {
   id: number;
